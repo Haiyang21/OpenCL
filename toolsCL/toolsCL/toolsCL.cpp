@@ -11,6 +11,7 @@ void testCL()
 
 	//! Init data
 	//create input data on CPU
+	float factor = 3.0;
 	int num = 1024;
 	float *h_idata = (float*)malloc(sizeof(float)* num);
 	for (int i = 0; i < num; i++){
@@ -27,9 +28,12 @@ void testCL()
 	cl_kernel Kernel = clDevice.GetKernel(kernel_name);
 
 	//! Set argments
+	//(1) basic type data can set directly(eg. float, int ...);
+	//(2) complex type data need set pointer which point to the memory(eg. float[], struct type ...)
 	cl_int ret;
 	ret  = clSetKernelArg(Kernel, 0, sizeof(cl_mem), (void*)&d_idata);
 	ret |= clSetKernelArg(Kernel, 1, sizeof(cl_mem), (void*)&d_odata);
+	ret |= clSetKernelArg(Kernel, 2, sizeof(cl_mem), (void*)&factor);
 	OCL_CHECK(ret, "mul2: clSetKernelArg");
 
 	//! Set global and local work size
