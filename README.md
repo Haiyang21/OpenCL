@@ -1,10 +1,10 @@
-# OpenCL
+# ToolsCL
 toolCL provide a serials of tools to make the project easy with OpenCL.
 
-Instructions:
-  Device clDevice;
-  clDevice.Init();  
-  //clDevice.SetKernelPath("");//default is "./kernelGen/cl_kernels/"
+## Instructions:
+	@Device clDevice;
+	clDevice.Init();  
+	//clDevice.SetKernelPath("");//default is "./kernelGen/cl_kernels/"
 	//clDevice.SetBuildOption("");//default is ""
 	
 	//! Init data
