@@ -1,5 +1,5 @@
 # ToolsCL
-toolCL provide a serials of tools to make the project easy with OpenCL.
+toolsCL provide a serials of tools to make the project easy with OpenCL.
 
 ## Instructions:
 	@Device clDevice;
