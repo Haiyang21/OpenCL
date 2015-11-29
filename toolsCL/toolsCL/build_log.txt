@@ -1,0 +1,2 @@
+ptxas application ptx input, line 115; error   : Call has wrong number of parameters
+ptxas fatal   : Ptx assembly aborted due to errors

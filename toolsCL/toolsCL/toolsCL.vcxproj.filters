@@ -33,6 +33,9 @@
     <ClInclude Include="dirent.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="toolsCL.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -45,6 +48,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="device.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFilter2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BufferMul.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -51,13 +51,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Program Files\CUDA7.5\CUDA\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Program Files\CUDA7.5\CUDA\include;E:\Library\FreeImage\Dist\x32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Program Files\CUDA7.5\CUDA\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OpenCL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Program Files\CUDA7.5\CUDA\lib\Win32;E:\Library\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenCL.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,10 +86,13 @@
     <ClInclude Include="dirent.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="toolsCL.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BufferMul.cpp" />
     <ClCompile Include="cl_kernels.cpp" />
     <ClCompile Include="device.cpp" />
+    <ClCompile Include="ImageFilter2D.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="toolsCL.cpp" />
   </ItemGroup>
