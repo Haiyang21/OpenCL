@@ -51,24 +51,23 @@ cl_int Device::Init(int deviceId) {
     if (deviceId == -1) {
       int i;
       for (i = 0; i < (int) uiNumDevices; i++) {
-        clGetDeviceInfo(pDevices[i], CL_DEVICE_HOST_UNIFIED_MEMORY,
-            sizeof(cl_bool), &unified_memory, NULL);
-        if (!unified_memory) { //skip iGPU
-          //we pick the first dGPU we found
-          pDevices[0] = pDevices[i];
-          device_id = i;
-		  std::cout << "Picked default device type : dGPU " << device_id << std::endl;
-          break;
-        }
+		clGetDeviceInfo(pDevices[i], CL_DEVICE_HOST_UNIFIED_MEMORY, sizeof(cl_bool), &unified_memory, NULL);
+		if (!unified_memory) { //skip iGPU
+			//we pick the first dGPU we found
+			pDevices[0] = pDevices[i];
+			device_id = i;
+			std::cout << "Picked default device type : dGPU " << device_id << std::endl;
+			break;
+		}
       }
       if (i == uiNumDevices) {
 		  std::cout << "Cannot find any dGPU! " << std::endl;
 		  //return 0;
       }
     } else if (deviceId >= 0 && deviceId < uiNumDevices) {
-      pDevices[0] = pDevices[deviceId];
-      device_id = deviceId;
-	  std::cout << "Picked device type : GPU " << device_id << std::endl;
+		pDevices[0] = pDevices[deviceId];
+		device_id = deviceId;
+		std::cout << "Picked device type : GPU " << device_id << std::endl;
     } else {
 		std::cout << "  Invalid GPU deviceId! " << std::endl;
     }
@@ -92,7 +91,8 @@ cl_int Device::Init(int deviceId) {
   return 0;
 }
 
-void Device::BuildProgram(std::string kernel_dir) {
+void Device::BuildProgram(std::string kernel_dir) 
+{
 	const char *pSource;
 #ifdef RUN_Android
 	std::string strSource = "";
@@ -102,10 +102,12 @@ void Device::BuildProgram(std::string kernel_dir) {
   std::string strSource = "";
   DIR *ocl_dir;
   struct dirent *dirp;
-  if ((ocl_dir = opendir(kernel_dir.c_str())) == NULL) {
+  if ((ocl_dir = opendir(kernel_dir.c_str())) == NULL) 
+  {
     fprintf(stderr, "Err: Open ocl dir failed!\n");
   }
-  while ((dirp = readdir(ocl_dir)) != NULL) {
+  while ((dirp = readdir(ocl_dir)) != NULL) 
+  {
     //Ignore hidden files
     if (dirp->d_name[0] == '.')
       continue;
@@ -126,13 +128,12 @@ void Device::BuildProgram(std::string kernel_dir) {
   size_t uiArrSourceSize[] = { 0 };
   uiArrSourceSize[0] = strlen(pSource);
   Program = NULL;
-  Program = clCreateProgramWithSource(Context, 1, &pSource, uiArrSourceSize,
-      NULL);
+  Program = clCreateProgramWithSource(Context, 1, &pSource, uiArrSourceSize, NULL);
+
   if (NULL == Program) {
     fprintf(stderr, "Err: Failed to create program\n");
   }
-  cl_int iStatus = clBuildProgram(Program, 1, pDevices, buildOption.c_str(),
-      NULL, NULL);
+  cl_int iStatus = clBuildProgram(Program, 1, pDevices, buildOption.c_str(), NULL, NULL);
   std::cout << "Build Program";
   if (CL_SUCCESS != iStatus) {
     fprintf(stderr, "Err: Failed to build program\n");
@@ -180,21 +181,21 @@ cl_int Device::ConvertToString(std::string pFileName, std::string &Str) {
   char *tmp = (char*) pFileName.data();
   std::fstream fFile(tmp, (std::fstream::in | std::fstream::binary));
   if (fFile.is_open()) {
-    fFile.seekg(0, std::fstream::end);
-    uiSize = uiFileSize = (size_t) fFile.tellg();
-    fFile.seekg(0, std::fstream::beg);
-    pStr = new char[uiSize + 1];
+	fFile.seekg(0, std::fstream::end);
+	uiSize = uiFileSize = (size_t) fFile.tellg();
+	fFile.seekg(0, std::fstream::beg);
+	pStr = new char[uiSize + 1];
 
-    if (NULL == pStr) {
-      fFile.close();
-      return 0;
-    }
-    fFile.read(pStr, uiFileSize);
-    fFile.close();
-    pStr[uiSize] = '\0';
-    Str = pStr;
-    delete[] pStr;
-    return 0;
+	if (NULL == pStr) {
+		fFile.close();
+		return 0;
+	}
+	fFile.read(pStr, uiFileSize);
+	fFile.close();
+	pStr[uiSize] = '\0';
+	Str = pStr;
+	delete[] pStr;
+	return 0;
   }else{
 	  std::cout << "Err: Failed to open cl file!" << std::endl;
   }

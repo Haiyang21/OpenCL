@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\samples">
+      <UniqueIdentifier>{7e1368f8-37c2-4b36-9dc4-b3e92dbb8110}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -41,20 +44,20 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="toolsCL.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="cl_kernels.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="device.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ImageFilter2D.cpp">
+    <ClCompile Include="toolsCL.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="BufferMul.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="samples\BufferMul.cpp">
+      <Filter>源文件\samples</Filter>
+    </ClCompile>
+    <ClCompile Include="samples\ImageFilter2D.cpp">
+      <Filter>源文件\samples</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

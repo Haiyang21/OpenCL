@@ -51,7 +51,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Program Files\CUDA7.5\CUDA\include;E:\Library\FreeImage\Dist\x32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Program Files\CUDA7.5\CUDA\include;E:\Library\FreeImage\Dist\x32;.\samples;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -89,10 +89,10 @@
     <ClInclude Include="toolsCL.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BufferMul.cpp" />
     <ClCompile Include="cl_kernels.cpp" />
     <ClCompile Include="device.cpp" />
-    <ClCompile Include="ImageFilter2D.cpp" />
+    <ClCompile Include="samples\BufferMul.cpp" />
+    <ClCompile Include="samples\ImageFilter2D.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="toolsCL.cpp" />
   </ItemGroup>
